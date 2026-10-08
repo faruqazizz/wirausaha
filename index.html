@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="id" class="light scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kokoa Nusantara — Cokelat Artisanal Ceria & Lezat</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Commercial-Free Google Fonts (OFL License): Fredoka & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Free Icons (SIL OFL / MIT License) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        choco: {
+                            50: '#FDF8F5',
+                            100: '#F7EBE4',
+                            200: '#EFD4C6',
+                            300: '#E1B49F',
+                            500: '#A0522D',
+                            700: '#5C2C16',
+                            800: '#3D1B0C',
+                            900: '#271006'
+                        },
+                        berry: {
+                            400: '#FF6B8B',
+                            500: '#FF477E',
+                            600: '#E01E5A'
+                        },
+                        sun: {
+                            300: '#FFDE59',
+                            400: '#FFBD59',
+                            500: '#FF914D'
+                        },
+                        mint: {
+                            100: '#E8F8F5',
+                            400: '#2EC4B6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Fredoka"', 'cursive', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-main: #FFFDF9;
+            --bg-secondary: #FFF6EC;
+            --bg-card: #FFFFFF;
+            --bg-nav: rgba(255, 253, 249, 0.9);
+            --border-color: #FED7AA;
+            --text-primary: #3D1B0C;
+            --text-muted: #8C6A5A;
+            --text-heading: #271006;
+            --card-shadow: 0 12px 30px -8px rgba(255, 145, 77, 0.15);
+        }
+
+        .dark {
+            --bg-main: #1C100B;
+            --bg-secondary: #281710;
+            --bg-card: #2E1B13;
+            --bg-nav: rgba(28, 16, 11, 0.92);
+            --border-color: #4A2E22;
+            --text-primary: #FFF1E6;
+            --text-muted: #D1B3A3;
+            --text-heading: #FFFFFF;
+            --card-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .cheerful-nav {
+            background: var(--bg-nav);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .cheerful-card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cheerful-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+
+        @keyframes toastUp {
+            from { transform: translateY(100%) scale(0.9); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        .animate-toast { animation: toastUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    </style>
+</head>
+<body class="selection:bg-sun-300 selection:text-choco-900 pb-20 md:pb-0">
+
+    <div class="bg-gradient-to-r from-sun-400 via-berry-400 to-sun-500 text-choco-900 text-xs sm:text-sm py-2.5 px-4 text-center font-bold shadow-sm flex items-center justify-center space-x-2">
+        <span>🎉 <span id="txt-announcement">Beli 3 Gratis 1 Cold-Pack Box Insulation khusus pengiriman minggu ini!</span></span>
+        <a href="#lineup" class="underline hover:opacity-80 ml-1 font-black"><span id="txt-announcement-link">Pesan Sekarang</span> <i class="fa-solid fa-arrow-right text-xs ml-1"></i></a>
+    </div>
+
+    <header class="sticky top-0 z-50 cheerful-nav">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between text-xs tracking-wide">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-2.5 group">
+                <span class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sun-400 to-berry-500 flex items-center justify-center text-white shadow-md transform group-hover:rotate-12 transition-transform">
+                    <i class="fa-solid fa-cookie-bite text-xl"></i>
+                </span>
+                <span class="font-display font-bold text-xl sm:text-2xl text-[var(--text-heading)] tracking-wider">
+                    Kokoa<span class="text-berry-500">.</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-7 text-[var(--text-muted)] font-bold text-sm">
+                <a href="#hero" class="hover:text-berry-500 transition-colors" id="nav-hero">Spesial Hari Ini</a>
+                <a href="#bento" class="hover:text-berry-500 transition-colors" id="nav-bento">Rahasia Lezat</a>
+                <a href="#lineup" class="hover:text-berry-500 transition-colors" id="nav-lineup">Semua Varian</a>
+                <a href="#customizer" class="hover:text-berry-500 transition-colors" id="nav-customizer">Rakit Gift Box</a>
+                <a href="#quiz" class="hover:text-berry-500 transition-colors" id="nav-quiz">Kuis Cokelat</a>
+                <a href="#faq" class="hover:text-berry-500 transition-colors" id="nav-faq">Tanya Jawab</a>
+            </nav>
+
+            <!-- Quick Action Controls -->
+            <div class="flex items-center space-x-3 text-[var(--text-muted)]">
+                <!-- Language Toggle Button -->
+                <button onclick="toggleLanguage()" class="px-3 py-1.5 rounded-full bg-sun-300/30 text-choco-800 dark:text-sun-300 font-extrabold hover:bg-sun-300/50 transition-all text-xs flex items-center space-x-1 border border-sun-400/40">
+                    <i class="fa-solid fa-globe text-xs"></i>
+                    <span id="lang-indicator">ID</span>
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" class="p-2.5 rounded-full bg-choco-100 dark:bg-choco-800 text-choco-800 dark:text-sun-300 hover:scale-110 transition-transform" title="Ganti Tema Ceria">
+                    <i class="fa-solid fa-sun text-sm dark:hidden text-sun-500"></i>
+                    <i class="fa-solid fa-moon text-sm hidden dark:inline text-sun-300"></i>
+                </button>
+
+                <!-- Search Trigger -->
+                <button onclick="toggleSearchModal()" class="p-2.5 rounded-full bg-choco-100 dark:bg-choco-800 text-choco-800 dark:text-choco-200 hover:scale-110 transition-transform" title="Cari Cokelat">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+
+                <!-- Bag / Cart Drawer Button -->
+                <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-berry-500 text-white shadow-md hover:scale-105 transition-transform" title="Keranjang Belanja">
+                    <i class="fa-solid fa-basket-shopping text-sm"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-sun-400 text-choco-900 font-extrabold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-choco-900">0</span>
+                </button>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-xl hover:text-berry-500">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[var(--bg-main)] border-b-2 border-[var(--border-color)] px-6 py-4 space-y-3 font-bold text-sm">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block py-1 hover:text-berry-500" id="mnav-hero">Spesial Hari Ini</a>
+            <a href="#bento" onclick="toggleMobileMenu()" class="block py-1 hover:text-berry-500" id="mnav-bento">Rahasia Kelezatan Kakao</a>
+            <a href="#lineup" onclick="toggleMobileMenu()" class="block py-1 hover:text-berry-500" id="mnav-lineup">Semua Varian Cokelat</a>
+            <a href="#customizer" onclick="toggleMobileMenu()" class="block py-1 hover:text-berry-500" id="mnav-customizer">Rakit Gift Box Ceria</a>
+            <a href="#quiz" onclick="toggleMobileMenu()" class="block py-1 hover:text-berry-500" id="mnav-quiz">Kuis Rekomendasi Rasa</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block py-1 hover:text-berry-500" id="mnav-faq">Dukungan & FAQ</a>
+        </div>
+    </header>
+
+    <section id="hero" class="relative pt-12 pb-20 sm:pt-16 sm:pb-28 overflow-hidden bg-gradient-to-b from-sun-300/20 via-transparent to-transparent">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold bg-sun-300 text-choco-900 shadow-sm border border-sun-400" id="hero-tag">
+                        🍫 Artisanal Chocolate Nusantara — 100% Alami
+                    </span>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-display font-bold tracking-tight text-[var(--text-heading)] leading-tight">
+                        Sensasi Cokelat <span class="text-berry-500 underline decoration-sun-400 decoration-wavy decoration-2">Super Ceria</span> & Manis Alami!
+                    </h1>
+
+                    <p class="text-base sm:text-xl text-[var(--text-muted)] font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed" id="hero-sub">
+                        Dibuat langsung dari biji kakao lokal pilihan Indonesia. Diolah secara tradisional dengan cinta untuk menghadirkan kebahagiaan di setiap gigitan.
+                    </p>
+
+                    <!-- Hero Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#lineup" class="px-8 py-4 rounded-full bg-berry-500 hover:bg-berry-600 text-white font-display font-bold text-base shadow-lg shadow-berry-500/30 transform hover:-translate-y-1 transition-all flex items-center space-x-2" id="btn-hero-explore">
+                            <span>Jelajahi Varian Cokelat</span>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </a>
+                        <a href="#customizer" class="px-8 py-4 rounded-full bg-sun-300 hover:bg-sun-400 text-choco-900 font-display font-bold text-base shadow-md transform hover:-translate-y-1 transition-all border-2 border-sun-400 flex items-center space-x-2" id="btn-hero-box">
+                            <span>Rakit Gift Box Sendiri</span>
+                            <i class="fa-solid fa-gift"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats Badges -->
+                    <div class="pt-6 grid grid-cols-3 gap-3 border-t-2 border-[var(--border-color)] text-center max-w-md mx-auto lg:mx-0">
+                        <div class="p-2 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                            <span class="block font-display font-extrabold text-lg sm:text-xl text-berry-500">100%</span>
+                            <span class="text-[11px] text-[var(--text-muted)] font-bold" id="stat-1">Petani Lokal</span>
+                        </div>
+                        <div class="p-2 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                            <span class="block font-display font-extrabold text-lg sm:text-xl text-sun-500">Tanpa</span>
+                            <span class="text-[11px] text-[var(--text-muted)] font-bold" id="stat-2">Pengawet Buatan</span>
+                        </div>
+                        <div class="p-2 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-color)]">
+                            <span class="block font-display font-extrabold text-lg sm:text-xl text-mint-400">Garansi</span>
+                            <span class="text-[11px] text-[var(--text-muted)] font-bold" id="stat-3">Bebas Leleh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column Graphic -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Playful Background Blobs -->
+                        <div class="absolute -top-6 -left-6 w-48 h-48 bg-sun-300 rounded-full blur-2xl opacity-60"></div>
+                        <div class="absolute -bottom-6 -right-6 w-52 h-52 bg-berry-400 rounded-full blur-2xl opacity-50"></div>
+
+                        <div class="cheerful-card rounded-3xl p-4 relative z-10 animate-float bg-[var(--bg-card)]">
+                            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Kokoa Cokelat Artisanal" 
+                                 class="w-full h-80 sm:h-96 object-cover rounded-2xl border-2 border-[var(--border-color)]"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x800/FFBD59/3D1B0C?text=Cokelat+Ceria+Kokoa';">
+                            
+                            <!-- Floating Tag Badge -->
+                            <div class="absolute -bottom-4 right-6 bg-sun-400 text-choco-900 px-5 py-2.5 rounded-full font-display font-bold text-xs sm:text-sm shadow-lg border-2 border-white dark:border-choco-900 flex items-center space-x-2">
+                                <i class="fa-solid fa-crown text-amber-800"></i>
+                                <span id="hero-badge-txt">Favorit #1: Sulawesi Berry 74%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bento" class="py-16 sm:py-24 max-w-6xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
+            <span class="text-berry-500 font-extrabold text-xs sm:text-sm uppercase tracking-wider block" id="bento-tag"> Rahasia Kelezatan Cokelat Kami </span>
+            <h2 class="text-3xl sm:text-5xl font-display font-bold text-[var(--text-heading)]" id="bento-title">Proses Bean-to-Bar Penuh Keceriaan.</h2>
+            <p class="text-[var(--text-muted)] text-sm sm:text-base font-medium" id="bento-sub">Dari kebun petani Indonesia langsung ke genggaman manis Anda.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Bento Card 1 -->
+            <div class="md:col-span-2 cheerful-card p-8 rounded-3xl bg-gradient-to-br from-sun-300/30 via-[var(--bg-card)] to-[var(--bg-card)] flex flex-col justify-between">
+                <div class="space-y-3 max-w-lg">
+                    <span class="inline-block px-3 py-1 rounded-full bg-sun-400 text-choco-900 font-extrabold text-xs">
+                        🌱 Step 01 / Fermentasi Alami
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-display font-bold text-[var(--text-heading)]" id="b1-title">Peti Kayu Jati & Aromatik Tropis.</h3>
+                    <p class="text-[var(--text-muted)] text-sm leading-relaxed font-medium" id="b1-desc">
+                        Biji kakao difermentasi secara alami selama 6 hari di peti kayu jati. Menghasilkan aroma alami buah tropis, bunga liar, dan sensasi manis alami yang kaya.
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center space-x-2 text-berry-500 font-extrabold text-xs">
+                    <i class="fa-solid fa-heart text-sm"></i>
+                    <span id="b1-badge">100% Bebas Perisa Sintetis</span>
+                </div>
+            </div>
+
+            <!-- Bento Card 2 -->
+            <div class="cheerful-card p-8 rounded-3xl bg-gradient-to-br from-berry-400/20 via-[var(--bg-card)] to-[var(--bg-card)] flex flex-col justify-between">
+                <div class="space-y-3">
+                    <span class="inline-block px-3 py-1 rounded-full bg-berry-400 text-white font-extrabold text-xs">
+                        🔥 Step 02 / Roasting Presisi
+                    </span>
+                    <h3 class="text-xl font-display font-bold text-[var(--text-heading)]" id="b2-title">Pemanggangan Suhu Rendah.</h3>
+                    <p class="text-[var(--text-muted)] text-xs leading-relaxed font-medium" id="b2-desc">
+                        Menjaga nutrisi antioksidan alami serta mencegah rasa pahit berlebih.
+                    </p>
+                </div>
+                <div class="pt-6 font-display text-4xl font-extrabold text-berry-500">
+                    110°C <span class="text-xs font-sans text-[var(--text-muted)] font-bold block" id="b2-badge">Suhu Roasting Optimal</span>
+                </div>
+            </div>
+
+            <!-- Bento Card 3 -->
+            <div class="cheerful-card p-8 rounded-3xl bg-gradient-to-br from-mint-100/50 dark:from-mint-400/10 via-[var(--bg-card)] to-[var(--bg-card)] flex flex-col justify-between">
+                <div class="space-y-3">
+                    <span class="inline-block px-3 py-1 rounded-full bg-mint-400 text-white font-extrabold text-xs">
+                        🪨 Step 03 / Penggilingan Batu
+                    </span>
+                    <h3 class="text-xl font-display font-bold text-[var(--text-heading)]" id="b3-title">72 Jam Batu Granit.</h3>
+                    <p class="text-[var(--text-muted)] text-xs leading-relaxed font-medium" id="b3-desc">
+                        Digerus halus dengan gilingan batu granit alami hingga ekstra lembut di lidah.
+                    </p>
+                </div>
+                <div class="pt-6 font-display text-4xl font-extrabold text-mint-400">
+                    &lt; 20µm <span class="text-xs font-sans text-[var(--text-muted)] font-bold block" id="b3-badge">Kehalusan Tekstur Beludru</span>
+                </div>
+            </div>
+
+            <!-- Bento Card 4 -->
+            <div class="md:col-span-2 cheerful-card p-8 rounded-3xl bg-gradient-to-br from-sun-400/30 via-[var(--bg-card)] to-[var(--bg-card)] flex flex-col justify-between">
+                <div class="space-y-3 max-w-lg">
+                    <span class="inline-block px-3 py-1 rounded-full bg-sun-500 text-white font-extrabold text-xs">
+                        🤝 Step 04 / Direct Trade Peduli
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-display font-bold text-[var(--text-heading)]" id="b4-title">Memberdayakan Petani Kakao Lokal.</h3>
+                    <p class="text-[var(--text-muted)] text-sm leading-relaxed font-medium" id="b4-desc">
+                        Kami bekerja sama langsung dengan lebih dari 40 keluarga petani kakao di Bali, Sulawesi, & Sumatra dengan standar harga 2x lebih tinggi dari pasar umum.
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center space-x-2 text-sun-500 font-extrabold text-xs">
+                    <i class="fa-solid fa-hand-holding-heart text-base"></i>
+                    <span id="b4-badge">Mendukung Kesejahteraan Petani Indonesia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lineup" class="py-16 sm:py-28 bg-[var(--bg-secondary)] border-y-2 border-[var(--border-color)]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                <span class="text-sun-500 font-extrabold text-xs sm:text-sm uppercase tracking-wider block" id="lineup-tag">Pilih Favorit Anda</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-[var(--text-heading)]" id="lineup-title">Koleksi Cokelat Ceria.</h2>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex items-center justify-center space-x-2 sm:space-x-3 mb-12 overflow-x-auto pb-2 hide-scrollbar">
+                <button onclick="filterProducts('all')" class="product-filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold bg-berry-500 text-white shadow-md transition-all" data-category="all" id="filter-all">
+                    ✨ Semua Varian
+                </button>
+                <button onclick="filterProducts('dark')" class="product-filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold cheerful-card text-[var(--text-muted)] hover:text-berry-500 transition-all" data-category="dark" id="filter-dark">
+                    🍫 Dark Chocolate
+                </button>
+                <button onclick="filterProducts('milk')" class="product-filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold cheerful-card text-[var(--text-muted)] hover:text-berry-500 transition-all" data-category="milk" id="filter-milk">
+                    🥛 Milk & Matcha
+                </button>
+                <button onclick="filterProducts('praline')" class="product-filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold cheerful-card text-[var(--text-muted)] hover:text-berry-500 transition-all" data-category="praline" id="filter-praline">
+                    🍬 Praline & Truffle
+                </button>
+                <button onclick="filterProducts('gift')" class="product-filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold cheerful-card text-[var(--text-muted)] hover:text-berry-500 transition-all" data-category="gift" id="filter-gift">
+                    🎁 Gift Set Special
+                </button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic Products Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="customizer" class="py-16 sm:py-28">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-2">
+                <span class="text-berry-500 font-extrabold text-xs sm:text-sm uppercase tracking-wider block" id="studio-tag"> Studio Kreasi Gift Box </span>
+                <h2 class="text-3xl sm:text-5xl font-display font-bold text-[var(--text-heading)]" id="studio-title">Rakit Box Cokelat Impian.</h2>
+                <p class="text-[var(--text-muted)] text-sm sm:text-base font-medium" id="studio-sub">
+                    Pilih 4 varian favorit Anda. Kami kemas cantik lengkap dengan pita warna-warni & kartu ucapan manis gratis!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- Left: Chocolate Picker -->
+                <div class="lg:col-span-7 cheerful-card p-6 sm:p-8 rounded-3xl space-y-6">
+                    <div class="flex items-center justify-between border-b-2 border-[var(--border-color)] pb-4">
+                        <h3 class="font-display font-bold text-base sm:text-lg text-[var(--text-heading)]" id="studio-step1">Langkah 1: Klik untuk Pilih 4 Cokelat</h3>
+                        <span id="box-slot-count" class="text-xs sm:text-sm font-extrabold px-3 py-1 rounded-full bg-sun-300 text-choco-900">0 dari 4 Terpilih</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="box-picker-items">
+                        <!-- Dynamic Pickers -->
+                    </div>
+                </div>
+
+                <!-- Right: Box Slot Preview -->
+                <div class="lg:col-span-5 cheerful-card p-6 sm:p-8 rounded-3xl space-y-6 sticky top-20 bg-gradient-to-b from-sun-300/10 to-[var(--bg-card)]">
+                    <h3 class="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] border-b-2 border-[var(--border-color)] pb-4" id="studio-step2">
+                        Langkah 2: Isi Slot Gift Box Anda
+                    </h3>
+
+                    <div class="grid grid-cols-2 gap-3" id="box-selected-slots">
+                        <!-- Dynamic Selected Slots -->
+                    </div>
+
+                    <!-- Greeting Card Message Input -->
+                    <div class="space-y-2 pt-2">
+                        <label class="block text-xs font-bold text-[var(--text-muted)]" id="lbl-greeting">📝 Pesan Kartu Ucapan Gratis:</label>
+                        <textarea id="box-custom-message" rows="2" placeholder="Tulis ucapan selamat ulang tahun / ucapan manis di sini..." class="w-full px-4 py-3 rounded-2xl bg-[var(--bg-main)] border-2 border-[var(--border-color)] text-xs font-medium focus:outline-none focus:border-berry-500"></textarea>
+                    </div>
+
+                    <button id="add-custom-box-btn" disabled onclick="addCustomBoxToCart()" class="w-full py-4 px-6 rounded-full bg-berry-500 text-white font-display font-bold text-sm disabled:opacity-40 disabled:cursor-not-allowed hover:bg-berry-600 transition-all shadow-lg shadow-berry-500/30 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-gift"></i>
+                        <span id="btn-add-giftbox">Tambahkan Gift Box ke Keranjang</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="py-16 sm:py-28 bg-[var(--bg-secondary)] border-t-2 border-[var(--border-color)]">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="cheerful-card p-8 sm:p-12 rounded-3xl text-center space-y-6 bg-gradient-to-b from-[var(--bg-card)] to-sun-300/10">
+                <span class="text-berry-500 text-xs font-extrabold uppercase tracking-wider block" id="quiz-tag">✨ Rekomendasi Rasa Ceria</span>
+                <h2 class="text-3xl sm:text-4xl font-display font-bold text-[var(--text-heading)]" id="quiz-title">Temukan Cokelat Jodoh Lidah Anda!</h2>
+                <p class="text-[var(--text-muted)] text-sm max-w-md mx-auto font-medium" id="quiz-sub">
+                    Jawab 3 pertanyaan seru di bawah ini untuk menemukan varian cokelat yang paling pas dengan selera Anda!
+                </p>
+
+                <div id="quiz-step-container" class="pt-4">
+                    <!-- Dynamic Quiz Rendered via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-16 sm:py-28 max-w-4xl mx-auto px-4">
+        <div class="text-center mb-14 space-y-2">
+            <span class="text-sun-500 text-xs font-extrabold uppercase tracking-wider block" id="faq-tag"> Bantuan & Pertanyaan </span>
+            <h2 class="text-3xl sm:text-4xl font-display font-bold text-[var(--text-heading)]" id="faq-title">Sering Ditanyakan (FAQ).</h2>
+        </div>
+
+        <div class="space-y-4">
+            <div class="cheerful-card rounded-2xl overflow-hidden">
+                <button onclick="toggleFAQ(1)" class="w-full text-left p-5 font-bold text-sm sm:text-base flex items-center justify-between">
+                    <span id="q1-title">🔥 Apakah cokelat dijamin aman & tidak leleh saat dikirim?</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-berry-500 transition-transform" id="faq-icon-1"></i>
+                </button>
+                <div id="q1-ans" class="hidden p-5 pt-0 text-xs sm:text-sm text-[var(--text-muted)] font-medium leading-relaxed border-t-2 border-[var(--border-color)] bg-[var(--bg-secondary)]">
+                    Sangat terjamin! Setiap paket pesanan kami lengkapi dengan alumunium insulation box + cold gel pack pendingin gratis. Jika leleh di jalan, kami garansi ganti baru 100%!
+                </div>
+            </div>
+
+            <div class="cheerful-card rounded-2xl overflow-hidden">
+                <button onclick="toggleFAQ(2)" class="w-full text-left p-5 font-bold text-sm sm:text-base flex items-center justify-between">
+                    <span id="q2-title">🌿 Apakah produk Kokoa Nusantara Halal & Tanpa Sawit?</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-berry-500 transition-transform" id="faq-icon-2"></i>
+                </button>
+                <div id="q2-ans" class="hidden p-5 pt-0 text-xs sm:text-sm text-[var(--text-muted)] font-medium leading-relaxed border-t-2 border-[var(--border-color)] bg-[var(--bg-secondary)]">
+                    100% Halal! Seluruh varian dibuat menggunakan lemak kakao murni tanpa tambahan minyak kelapa sawit maupun perisa sintesis.
+                </div>
+            </div>
+
+            <div class="cheerful-card rounded-2xl overflow-hidden">
+                <button onclick="toggleFAQ(3)" class="w-full text-left p-5 font-bold text-sm sm:text-base flex items-center justify-between">
+                    <span id="q3-title">🎁 Bisakah memesan untuk hampers pernikahan atau souvenir perusahaan?</span>
+                    <i class="fa-solid fa-chevron-down text-xs text-berry-500 transition-transform" id="faq-icon-3"></i>
+                </button>
+                <div id="q3-ans" class="hidden p-5 pt-0 text-xs sm:text-sm text-[var(--text-muted)] font-medium leading-relaxed border-t-2 border-[var(--border-color)] bg-[var(--bg-secondary)]">
+                    Bisa banget! Kami siap membantu souvenir kustom skala kecil hingga besar lengkap dengan cetak logo perusahaan atau nama pengantin Anda.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[var(--bg-secondary)] text-[var(--text-muted)] text-xs border-t-2 border-[var(--border-color)] py-12">
+        <div class="max-w-6xl mx-auto px-4 space-y-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-8 border-b-2 border-[var(--border-color)]">
+                <div class="space-y-3">
+                    <span class="font-display font-bold text-sm text-[var(--text-heading)] block" id="ft-col1">Menu Populer</span>
+                    <a href="#lineup" class="block hover:text-berry-500 font-medium">Sulawesi Dark Berry</a>
+                    <a href="#lineup" class="block hover:text-berry-500 font-medium">Jembrana Milk Velvet</a>
+                    <a href="#lineup" class="block hover:text-berry-500 font-medium">Sea Salt Caramel Praline</a>
+                    <a href="#lineup" class="block hover:text-berry-500 font-medium">Matcha Uji White Chocolate</a>
+                </div>
+                <div class="space-y-3">
+                    <span class="font-display font-bold text-sm text-[var(--text-heading)] block" id="ft-col2">Layanan Ceria</span>
+                    <a href="#customizer" class="block hover:text-berry-500 font-medium" id="ft-studio-1">Custom Gift Box</a>
+                    <a href="#quiz" class="block hover:text-berry-500 font-medium" id="ft-studio-2">Kuis Rekomendasi Rasa</a>
+                    <a href="#bento" class="block hover:text-berry-500 font-medium" id="ft-studio-3">Cerita Kebun Kakao</a>
+                </div>
+                <div class="space-y-3">
+                    <span class="font-display font-bold text-sm text-[var(--text-heading)] block" id="ft-col3">Rumah Kokoa</span>
+                    <p class="text-[11px] leading-relaxed font-medium">Jl. Senopati No. 88, Kebayoran Baru, Jakarta Selatan.</p>
+                    <p class="text-[11px] font-bold text-sun-500" id="ft-hours">Buka Setiap Hari: 09.00 - 21.00 WIB</p>
+                </div>
+                <div class="space-y-3">
+                    <span class="font-display font-bold text-sm text-[var(--text-heading)] block" id="ft-col4">Hubungi Kami</span>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="text-berry-500 font-bold hover:underline block text-xs">
+                        <i class="fa-brands fa-whatsapp text-sm mr-1"></i> WhatsApp CS (+62 812-3456-7890)
+                    </a>
+                    <p class="text-[11px] font-medium" id="ft-cs-sub">Layanan ramah & respon cepat!</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] font-medium space-y-4 sm:space-y-0">
+                <p>&copy; 2026 Kokoa Nusantara. <span id="ft-rights">Hak Cipta Dilindungi. Made with ❤️ in Indonesia.</span></p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-berry-500" id="ft-privacy">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-berry-500" id="ft-terms">Syarat Ketentuan</a>
+                    <a href="#" class="hover:text-berry-500" id="ft-guarantee">Garansi Bebas Leleh</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-[var(--bg-nav)] backdrop-blur-xl border-t-2 border-[var(--border-color)] md:hidden flex items-center justify-around py-2 px-2 text-[var(--text-muted)] text-[10px] font-bold">
+        <a href="#hero" class="flex flex-col items-center space-y-1 hover:text-berry-500 py-1 px-2">
+            <i class="fa-solid fa-house text-base"></i>
+            <span id="mb-home">Beranda</span>
+        </a>
+        <a href="#lineup" class="flex flex-col items-center space-y-1 hover:text-berry-500 py-1 px-2">
+            <i class="fa-solid fa-store text-base"></i>
+            <span id="mb-catalog">Varian</span>
+        </a>
+        <a href="#customizer" class="flex flex-col items-center space-y-1 hover:text-berry-500 py-1 px-2">
+            <i class="fa-solid fa-gift text-base"></i>
+            <span id="mb-custom">Rakit Box</span>
+        </a>
+        <button onclick="toggleCartDrawer()" class="flex flex-col items-center space-y-1 text-berry-500 relative py-1 px-2">
+            <i class="fa-solid fa-basket-shopping text-base"></i>
+            <span id="mb-cart">Keranjang</span>
+            <span id="mobile-cart-badge" class="absolute top-0 right-1 bg-sun-400 text-choco-900 text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <button onclick="toggleTheme()" class="flex flex-col items-center space-y-1 hover:text-berry-500 py-1 px-2">
+            <i class="fa-solid fa-sun text-base"></i>
+            <span id="mb-theme">Tema</span>
+        </button>
+    </div>
+
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md cheerful-card text-[var(--text-primary)] shadow-2xl flex flex-col bg-[var(--bg-card)]">
+                <div class="p-6 border-b-2 border-[var(--border-color)] flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-basket-shopping text-berry-500 text-lg"></i>
+                        <h3 class="font-display font-bold text-lg" id="cart-drawer-title">Keranjang Cokelat Ceria</h3>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-[var(--text-muted)] hover:text-berry-500 p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cart-items-container">
+                    <!-- Dynamic cart items -->
+                </div>
+
+                <div class="p-6 border-t-2 border-[var(--border-color)] bg-[var(--bg-secondary)] space-y-4">
+                    <div class="flex items-center justify-between text-xs sm:text-sm">
+                        <span class="text-[var(--text-muted)] font-bold" id="cart-total-label">Total Estimasi Belanja:</span>
+                        <span id="cart-total-price" class="font-display font-bold text-xl text-berry-500">Rp 0</span>
+                    </div>
+                    <button onclick="checkoutViaWhatsApp()" class="w-full py-4 rounded-full bg-berry-500 hover:bg-berry-600 text-white font-display font-bold text-sm transition-all shadow-lg shadow-berry-500/30 flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span id="btn-checkout">Pesan Sekarang via WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeProductModal()"></div>
+        <div class="cheerful-card rounded-3xl max-w-xl w-full overflow-hidden shadow-2xl relative z-10 bg-[var(--bg-card)]" id="product-modal-content">
+            <!-- Dynamic Modal -->
+        </div>
+    </div>
+
+    <div id="search-modal" class="fixed inset-0 z-50 hidden flex items-start justify-center pt-20 p-4">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="toggleSearchModal()"></div>
+        <div class="cheerful-card rounded-3xl max-w-lg w-full p-6 relative z-10 space-y-4 bg-[var(--bg-card)]">
+            <div class="flex items-center justify-between">
+                <h3 class="font-display font-bold text-base" id="search-modal-title">Cari Cokelat Favorit Anda</h3>
+                <button onclick="toggleSearchModal()" class="text-[var(--text-muted)] hover:text-berry-500"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <input type="text" id="search-input" oninput="handleSearch(this.value)" placeholder="Ketik rasa / asal daerah (cth: Sulawesi, Caramel, Milk)..." class="w-full px-4 py-3 rounded-2xl bg-[var(--bg-main)] border-2 border-[var(--border-color)] text-xs sm:text-sm font-medium focus:outline-none focus:border-berry-500">
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 space-y-2 pointer-events-none"></div>
+
+    <script>
+        // State Variables
+        let currentLang = 'id';
+        let currentTheme = 'light';
+        let cart = [];
+        let selectedCustomSlots = [];
+        let currentQuizStep = 0;
+        let quizAnswers = [];
+
+        // Dynamic Product Database (Freely Usable Imagery from Unsplash Commercial License)
+        const products = [
+            {
+                id: 1,
+                category: "dark",
+                price: 65000,
+                cocoaPercent: "74%",
+                image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80",
+                id_name: "Sulawesi Berry Dark 74%",
+                en_name: "Sulawesi Berry Dark 74%",
+                id_origin: "Luwu, Sulawesi Selatan",
+                en_origin: "Luwu, South Sulawesi",
+                id_tasting: "Buah beri liar, kacang sangrai, manis alami",
+                en_tasting: "Wild berries, roasted nut, natural sweet",
+                id_desc: "Cokelat hitam artisanal dengan sensasi rasa manis buah beri alami khas Sulawesi. Sangat pas untuk peningkat suasana hati ceria!",
+                en_desc: "Artisanal dark chocolate bursting with natural berry sweetness from Sulawesi. Perfect mood booster!"
+            },
+            {
+                id: 2,
+                category: "milk",
+                price: 60000,
+                cocoaPercent: "55%",
+                image: "https://images.unsplash.com/photo-1582176604856-e822b335343f?auto=format&fit=crop&w=600&q=80",
+                id_name: "Jembrana Milk Velvet 55%",
+                en_name: "Jembrana Milk Velvet 55%",
+                id_origin: "Jembrana, Bali",
+                en_origin: "Jembrana, Bali",
+                id_tasting: "Karamel lembut, madu segar, susu creamy",
+                en_tasting: "Smooth caramel, fresh honey, creamy milk",
+                id_desc: "Paduan harmonis kakao organik Bali & susu segar lokal yang super lembut. Lumer seketika membuat senyum di setiap gigitan.",
+                en_desc: "A silky blend of organic Bali cocoa and fresh local milk. Melts smoothly with pure happiness."
+            },
+            {
+                id: 3,
+                category: "praline",
+                price: 135000,
+                cocoaPercent: "68%",
+                image: "https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=600&q=80",
+                id_name: "Sea Salt Caramel Praline Box",
+                en_name: "Sea Salt Caramel Praline Box",
+                id_origin: "Racikan Nusantara",
+                en_origin: "Nusantara Recipe",
+                id_tasting: "Karamel lumer, garam laut Kusamba, cokelat lezat",
+                en_tasting: "Gooey caramel, Kusamba sea salt, rich cacao",
+                id_desc: "Kotak isi 9 butir praline gurih manis bertabur garam laut organik Kusamba Bali. Favorit pesta & hadiah ceria!",
+                en_desc: "9 gourmet pralines filled with gooey caramel and topped with Kusamba Bali organic sea salt."
+            },
+            {
+                id: 4,
+                category: "dark",
+                price: 70000,
+                cocoaPercent: "82%",
+                image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+                id_name: "Berau Dark Nibs 82%",
+                en_name: "Berau Dark Nibs 82%",
+                id_origin: "Berau, Kalimantan Timur",
+                en_origin: "Berau, East Kalimantan",
+                id_tasting: "Kakao pekat, renyah nibs panggang, aroma kopi",
+                en_tasting: "Rich cocoa, crunchy roasted nibs, espresso hint",
+                id_desc: "Bagi pecinta cokelat pekat sejati! Sensasi renyah remahan cacahan biji kakao panggang dengan energi penuh semangat.",
+                en_desc: "For true dark chocolate lovers! Packed with crunchy roasted cacao nibs for energetic days."
+            },
+            {
+                id: 5,
+                category: "milk",
+                price: 65000,
+                cocoaPercent: "38%",
+                image: "https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=600&q=80",
+                id_name: "Matcha White Sweet Delight",
+                en_name: "Matcha White Sweet Delight",
+                id_origin: "Jawa Tengah & Matcha Uji",
+                en_origin: "Central Java & Uji Matcha",
+                id_tasting: "Teh hijau harum, lemak kakao murni, manis vanila",
+                en_tasting: "Fragrant green tea, pure cocoa butter, sweet vanilla",
+                id_desc: "Perpaduan lemak kakao murni lokal dengan matcha pilihan Jepang. Kombinasi manis lembut dan harum teh yang menyenangkan.",
+                en_desc: "Pure local cocoa butter meets Japanese Uji matcha for a fragrant and soothing treat."
+            },
+            {
+                id: 6,
+                category: "gift",
+                price: 245000,
+                cocoaPercent: "Variatif (45%-82%)",
+                image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80",
+                id_name: "Nusantara Joy Gift Box Set",
+                en_name: "Nusantara Joy Gift Box Set",
+                id_origin: "Eksplorasi Nusantara",
+                en_origin: "Nusantara Discovery",
+                id_tasting: "Jelajah rasa Bali, Sulawesi, Sumatra & Papua",
+                en_tasting: "Taste journey across Bali, Sulawesi & Papua",
+                id_desc: "Paket kado ceria isi 5 cokelat mini pilihan Nusantara lengkap dengan kartu cerita petualangan kebun kakao.",
+                en_desc: "A joyful gift box featuring 5 single-origin mini chocolate bars with a guided story map."
+            }
+        ];
+
+        // Bilingual Dictionary
+        const dict = {
+            id: {
+                announcement: "Beli 3 Gratis 1 Cold-Pack Box Insulation khusus pengiriman minggu ini!",
+                announcementLink: "Pesan Sekarang",
+                navHero: "Spesial Hari Ini",
+                navBento: "Rahasia Lezat",
+                navLineup: "Semua Varian",
+                navCustomizer: "Rakit Gift Box",
+                navQuiz: "Kuis Cokelat",
+                navFaq: "Tanya Jawab",
+                heroTag: "🍫 Artisanal Chocolate Nusantara — 100% Alami",
+                heroSub: "Dibuat langsung dari biji kakao lokal pilihan Indonesia. Diolah secara tradisional dengan cinta untuk menghadirkan kebahagiaan di setiap gigitan.",
+                btnHeroExplore: "Jelajahi Varian Cokelat",
+                btnHeroBox: "Rakit Gift Box Sendiri",
+                stat1: "Petani Lokal",
+                stat2: "Tanpa Pengawet",
+                stat3: "Garansi Bebas Leleh",
+                heroBadgeTxt: "Favorit #1: Sulawesi Berry 74%",
+                bentoTag: "Rahasia Kelezatan Cokelat Kami",
+                bentoTitle: "Proses Bean-to-Bar Penuh Keceriaan.",
+                bentoSub: "Dari kebun petani Indonesia langsung ke genggaman manis Anda.",
+                b1Title: "Peti Kayu Jati & Aromatik Tropis.",
+                b1Desc: "Biji kakao difermentasi secara alami selama 6 hari di peti kayu jati. Menghasilkan aroma alami buah tropis, bunga liar, dan sensasi manis alami yang kaya.",
+                b1Badge: "100% Bebas Perisa Sintetis",
+                b2Title: "Pemanggangan Suhu Rendah.",
+                b2Desc: "Menjaga nutrisi antioksidan alami serta mencegah rasa pahit berlebih.",
+                b2Badge: "Suhu Roasting Optimal",
+                b3Title: "72 Jam Batu Granit.",
+                b3Desc: "Digerus halus dengan gilingan batu granit alami hingga ekstra lembut di lidah.",
+                b3Badge: "Kehalusan Tekstur Beludru",
+                b4Title: "Memberdayakan Petani Kakao Lokal.",
+                b4Desc: "Kami bekerja sama langsung dengan lebih dari 40 keluarga petani kakao di Bali, Sulawesi, & Sumatra dengan standar harga 2x lebih tinggi dari pasar umum.",
+                b4Badge: "Mendukung Kesejahteraan Petani Indonesia",
+                lineupTag: "Pilih Favorit Anda",
+                lineupTitle: "Koleksi Cokelat Ceria.",
+                filterAll: "✨ Semua Varian",
+                filterDark: "🍫 Dark Chocolate",
+                filterMilk: "🥛 Milk & Matcha",
+                filterPraline: "🍬 Praline & Truffle",
+                filterGift: "🎁 Gift Set Special",
+                studioTag: "Studio Kreasi Gift Box",
+                studioTitle: "Rakit Box Cokelat Impian.",
+                studioSub: "Pilih 4 varian favorit Anda. Kami kemas cantik lengkap dengan pita warna-warni & kartu ucapan manis gratis!",
+                studioStep1: "Langkah 1: Klik untuk Pilih 4 Cokelat",
+                studioStep2: "Langkah 2: Isi Slot Gift Box Anda",
+                lblGreeting: "📝 Pesan Kartu Ucapan Gratis:",
+                btnAddGiftbox: "Tambahkan Gift Box ke Keranjang",
+                quizTag: "✨ Rekomendasi Rasa Ceria",
+                quizTitle: "Temukan Cokelat Jodoh Lidah Anda!",
+                quizSub: "Jawab 3 pertanyaan seru di bawah ini untuk menemukan varian cokelat yang paling pas dengan selera Anda!",
+                faqTag: "Bantuan & Pertanyaan",
+                faqTitle: "Sering Ditanyakan (FAQ).",
+                q1Title: "🔥 Apakah cokelat dijamin aman & tidak leleh saat dikirim?",
+                q1Ans: "Sangat terjamin! Setiap paket pesanan kami lengkapi dengan alumunium insulation box + cold gel pack pendingin gratis. Jika leleh di jalan, kami garansi ganti baru 100%!",
+                q2Title: "🌿 Apakah produk Kokoa Nusantara Halal & Tanpa Sawit?",
+                q2Ans: "100% Halal! Seluruh varian dibuat menggunakan lemak kakao murni tanpa tambahan minyak kelapa sawit maupun perisa sintesis.",
+                q3Title: "🎁 Bisakah memesan untuk hampers pernikahan atau souvenir perusahaan?",
+                q3Ans: "Bisa banget! Kami siap membantu souvenir kustom skala kecil hingga besar lengkap dengan cetak logo perusahaan atau nama pengantin Anda.",
+                ftCol1: "Menu Populer",
+                ftCol2: "Layanan Ceria",
+                ftCol3: "Rumah Kokoa",
+                ftCol4: "Hubungi Kami",
+                ftHours: "Buka Setiap Hari: 09.00 - 21.00 WIB",
+                ftCsSub: "Layanan ramah & respon cepat!",
+                ftRights: "Hak Cipta Dilindungi. Made with ❤️ in Indonesia.",
+                ftPrivacy: "Kebijakan Privasi",
+                ftTerms: "Syarat Ketentuan",
+                ftGuarantee: "Garansi Bebas Leleh",
+                mbHome: "Beranda",
+                mbCatalog: "Varian",
+                mbCustom: "Rakit Box",
+                mbCart: "Keranjang",
+                mbTheme: "Tema",
+                cartTitle: "Keranjang Cokelat Ceria",
+                cartTotalLabel: "Total Estimasi Belanja:",
+                btnCheckout: "Pesan Sekarang via WhatsApp",
+                searchModalTitle: "Cari Cokelat Favorit Anda",
+                btnBuy: "+ Beli",
+                priceLbl: "Harga"
+            },
+            en: {
+                announcement: "Buy 3 Get 1 Free Cold-Pack Box Insulation for deliveries this week!",
+                announcementLink: "Order Now",
+                navHero: "Today's Special",
+                navBento: "Delicious Secrets",
+                navLineup: "All Flavors",
+                navCustomizer: "Build Gift Box",
+                navQuiz: "Flavor Quiz",
+                navFaq: "FAQ Support",
+                heroTag: "🍫 Artisanal Indonesian Cacao — 100% Natural",
+                heroSub: "Handcrafted directly from Indonesian local cacao beans. Made traditionally with love to bring joy in every single bite.",
+                btnHeroExplore: "Explore All Chocolates",
+                btnHeroBox: "Build Custom Gift Box",
+                stat1: "Local Farmers",
+                stat2: "No Preservatives",
+                stat3: "Melt-Free Warranty",
+                heroBadgeTxt: "#1 Favorite: Sulawesi Berry 74%",
+                bentoTag: "The Secret to Our Delights",
+                bentoTitle: "Joyful Bean-to-Bar Crafting.",
+                bentoSub: "From Indonesian cacao farms directly to your happy hands.",
+                b1Title: "Teakwood Fermentation & Aromas.",
+                b1Desc: "Beans are naturally fermented for 6 days in teakwood boxes, revealing natural tropical berry and floral fragrance.",
+                b1Badge: "100% Artificial Flavor Free",
+                b2Title: "Low Temperature Roasting.",
+                b2Desc: "Preserves natural antioxidants while keeping flavor smooth and pleasant.",
+                b2Badge: "Optimal Roast Temperature",
+                b3Title: "72 Hours Granite Conching.",
+                b3Desc: "Ground smoothly with natural granite stone mills for ultra velvety texture.",
+                b3Badge: "Velvety Smooth Texture",
+                b4Title: "Empowering Local Farmers.",
+                b4Desc: "We partner directly with 40+ farming families across Bali, Sulawesi, and Sumatra with fair premium prices.",
+                b4Badge: "Supporting Indonesian Agriculture",
+                lineupTag: "Pick Your Favorites",
+                lineupTitle: "Joyful Chocolate Collection.",
+                filterAll: "✨ All Flavors",
+                filterDark: "🍫 Dark Chocolate",
+                filterMilk: "🥛 Milk & Matcha",
+                filterPraline: "🍬 Praline & Truffle",
+                filterGift: "🎁 Special Gift Sets",
+                studioTag: "Gift Box Creation Studio",
+                studioTitle: "Build Your Dream Box.",
+                studioSub: "Select 4 of your favorite bars. Beautifully packed with colorful ribbon & a free message card!",
+                studioStep1: "Step 1: Click to Select 4 Bars",
+                studioStep2: "Step 2: Fill Your Gift Box Slots",
+                lblGreeting: "📝 Free Greeting Card Note:",
+                btnAddGiftbox: "Add Gift Box to Bag",
+                quizTag: "✨ Joyful Recommendation Quiz",
+                quizTitle: "Find Your Perfect Chocolate Match!",
+                quizSub: "Answer 3 fun quick questions below to discover the best chocolate match for your taste buds!",
+                faqTag: "Help & Questions",
+                faqTitle: "Frequently Asked Questions.",
+                q1Title: "🔥 Is the chocolate guaranteed melt-free during shipping?",
+                q1Ans: "Guaranteed! Every order is packed with aluminum insulation and free gel cold packs. Full replacement warranty if damage occurs!",
+                q2Title: "🌿 Are Kokoa Nusantara products Halal & Palm Oil Free?",
+                q2Ans: "100% Halal! Crafted using pure cocoa butter without palm oil or artificial preservatives.",
+                q3Title: "🎁 Can I order custom hampers for weddings or corporate events?",
+                q3Ans: "Yes! We cater to customized gift boxes with custom branding for special occasions.",
+                ftCol1: "Popular Menu",
+                ftCol2: "Joyful Services",
+                ftCol3: "House of Kokoa",
+                ftCol4: "Contact Us",
+                ftHours: "Open Daily: 09:00 AM - 09:00 PM WIB",
+                ftCsSub: "Friendly service & quick response!",
+                ftRights: "All Rights Reserved. Made with ❤️ in Indonesia.",
+                ftPrivacy: "Privacy Policy",
+                ftTerms: "Terms of Use",
+                ftGuarantee: "Melt-Free Guarantee",
+                mbHome: "Home",
+                mbCatalog: "Lineup",
+                mbCustom: "Build Box",
+                mbCart: "Bag",
+                mbTheme: "Theme",
+                cartTitle: "Joyful Chocolate Bag",
+                cartTotalLabel: "Estimated Shopping Total:",
+                btnCheckout: "Order Now via WhatsApp",
+                searchModalTitle: "Search Favorite Chocolates",
+                btnBuy: "+ Buy",
+                priceLbl: "Price"
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('kokoa_lang');
+            if (savedLang) currentLang = savedLang;
+
+            const savedTheme = localStorage.getItem('kokoa_theme');
+            if (savedTheme) {
+                currentTheme = savedTheme;
+            }
+
+            applyTheme();
+            applyLanguage();
+            renderProducts(products);
+            renderCustomBoxPickers();
+            renderQuiz();
+            updateCartUI();
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('kokoa_theme', currentTheme);
+            applyTheme();
+            showToast(currentLang === 'id' ? `Mode ${currentTheme === 'dark' ? 'Malam Ceria' : 'Ceria Terang'} Diaktifkan` : `${currentTheme.toUpperCase()} mode enabled`);
+        }
+
+        function applyTheme() {
+            if (currentTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        // Language Toggle
+        function toggleLanguage() {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            localStorage.setItem('kokoa_lang', currentLang);
+            applyLanguage();
+            renderProducts(products);
+            renderCustomBoxPickers();
+            renderQuiz();
+            showToast(currentLang === 'id' ? "Bahasa diubah ke Indonesia" : "Language switched to English");
+        }
+
+        function setText(id, val, isHtml = false) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (isHtml) el.innerHTML = val;
+            else el.innerText = val;
+        }
+
+        function applyLanguage() {
+            const t = dict[currentLang];
+            setText('lang-indicator', currentLang.toUpperCase());
+            setText('txt-announcement', t.announcement);
+            setText('txt-announcement-link', t.announcementLink);
+
+            setText('nav-hero', t.navHero);
+            setText('nav-bento', t.navBento);
+            setText('nav-lineup', t.navLineup);
+            setText('nav-customizer', t.navCustomizer);
+            setText('nav-quiz', t.navQuiz);
+            setText('nav-faq', t.navFaq);
+
+            setText('mnav-hero', t.navHero);
+            setText('mnav-bento', t.navBento);
+            setText('mnav-lineup', t.navLineup);
+            setText('mnav-customizer', t.navCustomizer);
+            setText('mnav-quiz', t.navQuiz);
+            setText('mnav-faq', t.navFaq);
+
+            setText('hero-tag', t.heroTag);
+            setText('hero-sub', t.heroSub);
+            setText('btn-hero-explore', t.btnHeroExplore);
+            setText('btn-hero-box', t.btnHeroBox);
+            setText('stat-1', t.stat1);
+            setText('stat-2', t.stat2);
+            setText('stat-3', t.stat3);
+            setText('hero-badge-txt', t.heroBadgeTxt);
+
+            setText('bento-tag', t.bentoTag);
+            setText('bento-title', t.bentoTitle);
+            setText('bento-sub', t.bentoSub);
+            setText('b1-title', t.b1Title);
+            setText('b1-desc', t.b1Desc);
+            setText('b1-badge', t.b1Badge);
+            setText('b2-title', t.b2Title);
+            setText('b2-desc', t.b2Desc);
+            setText('b2-badge', t.b2Badge);
+            setText('b3-title', t.b3Title);
+            setText('b3-desc', t.b3Desc);
+            setText('b3-badge', t.b3Badge);
+            setText('b4-title', t.b4Title);
+            setText('b4-desc', t.b4Desc);
+            setText('b4-badge', t.b4Badge);
+
+            setText('lineup-tag', t.lineupTag);
+            setText('lineup-title', t.lineupTitle);
+            setText('filter-all', t.filterAll);
+            setText('filter-dark', t.filterDark);
+            setText('filter-milk', t.filterMilk);
+            setText('filter-praline', t.filterPraline);
+            setText('filter-gift', t.filterGift);
+
+            setText('studio-tag', t.studioTag);
+            setText('studio-title', t.studioTitle);
+            setText('studio-sub', t.studioSub);
+            setText('studio-step1', t.studioStep1);
+            setText('studio-step2', t.studioStep2);
+            setText('lbl-greeting', t.lblGreeting);
+            setText('btn-add-giftbox', t.btnAddGiftbox);
+
+            setText('quiz-tag', t.quizTag);
+            setText('quiz-title', t.quizTitle);
+            setText('quiz-sub', t.quizSub);
+
+            setText('faq-tag', t.faqTag);
+            setText('faq-title', t.faqTitle);
+            setText('q1-title', t.q1Title);
+            setText('q1-ans', t.q1Ans);
+            setText('q2-title', t.q2Title);
+            setText('q2-ans', t.q2Ans);
+            setText('q3-title', t.q3Title);
+            setText('q3-ans', t.q3Ans);
+
+            setText('ft-col1', t.ftCol1);
+            setText('ft-col2', t.ftCol2);
+            setText('ft-col3', t.ftCol3);
+            setText('ft-col4', t.ftCol4);
+            setText('ft-studio-1', t.navCustomizer);
+            setText('ft-studio-2', t.navQuiz);
+            setText('ft-studio-3', t.bentoTitle);
+            setText('ft-hours', t.ftHours);
+            setText('ft-cs-sub', t.ftCsSub);
+            setText('ft-rights', t.ftRights);
+            setText('ft-privacy', t.ftPrivacy);
+            setText('ft-terms', t.ftTerms);
+            setText('ft-guarantee', t.ftGuarantee);
+
+            setText('mb-home', t.mbHome);
+            setText('mb-catalog', t.mbCatalog);
+            setText('mb-custom', t.mbCustom);
+            setText('mb-cart', t.mbCart);
+            setText('mb-theme', t.mbTheme);
+
+            setText('cart-drawer-title', t.cartTitle);
+            setText('cart-total-label', t.cartTotalLabel);
+            setText('btn-checkout', t.btnCheckout);
+            setText('search-modal-title', t.searchModalTitle);
+        }
+
+        // Helper Toast Notification
+        function showToast(message, type = "success") {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `animate-toast pointer-events-auto p-4 rounded-2xl shadow-xl font-bold text-xs flex items-center space-x-3 border-2 ${
+                type === 'success' ? 'bg-sun-300 text-choco-900 border-sun-400' : 'bg-berry-500 text-white border-berry-600'
+            }`;
+            toast.innerHTML = `
+                <i class="fa-solid ${type === 'success' ? 'fa-face-smile text-berry-500' : 'fa-circle-exclamation text-white'} text-lg"></i>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // UI Modals Toggles
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleSearchModal() {
+            document.getElementById('search-modal').classList.toggle('hidden');
+        }
+
+        function toggleCartDrawer() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
+        function toggleFAQ(id) {
+            const content = document.getElementById(`q${id}-ans`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            if (content) content.classList.toggle('hidden');
+            if (icon) icon.classList.toggle('rotate-180');
+        }
+
+        // Product Catalog Render Logic
+        function renderProducts(items) {
+            const container = document.getElementById('products-container');
+            if (!container) return;
+            const t = dict[currentLang];
+
+            container.innerHTML = items.map(p => {
+                const name = currentLang === 'id' ? p.id_name : p.en_name;
+                const origin = currentLang === 'id' ? p.id_origin : p.en_origin;
+                const tasting = currentLang === 'id' ? p.id_tasting : p.en_tasting;
+                const desc = currentLang === 'id' ? p.id_desc : p.en_desc;
+
+                return `
+                    <div class="cheerful-card rounded-3xl overflow-hidden flex flex-col justify-between group bg-[var(--bg-card)]">
+                        <div class="relative overflow-hidden h-56 bg-sun-300/20">
+                            <img src="${p.image}" alt="${name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/FFBD59/3D1B0C?text=Cokelat+Kokoa';">
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold bg-sun-400 text-choco-900 shadow-md border border-white">
+                                Kakao ${p.cocoaPercent}
+                            </span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="text-[10px] text-berry-500 font-extrabold uppercase tracking-wider block mb-1">📍 ${origin}</span>
+                                <h3 class="font-display font-bold text-lg text-[var(--text-heading)] group-hover:text-berry-500 transition-colors">${name}</h3>
+                                <p class="text-xs text-[var(--text-muted)] mt-2 line-clamp-2 font-medium leading-relaxed">${desc}</p>
+                                <div class="mt-3 text-[11px] font-semibold text-choco-800 dark:text-sun-300 bg-sun-300/30 p-2.5 rounded-2xl border border-sun-400/30">
+                                    😋 ${tasting}
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t-2 border-[var(--border-color)] flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-[var(--text-muted)] uppercase font-bold block">${t.priceLbl}</span>
+                                    <span class="font-display font-bold text-base sm:text-lg text-berry-500">Rp ${p.price.toLocaleString('id-ID')}</span>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button onclick="openProductModal(${p.id})" class="p-2.5 rounded-full bg-[var(--bg-secondary)] hover:bg-sun-300 text-choco-800 dark:text-choco-200 text-xs transition-all" title="Lihat Detail">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                    <button onclick="addToCart(${p.id})" class="px-4 py-2.5 rounded-full bg-berry-500 hover:bg-berry-600 text-white text-xs font-display font-bold shadow-md transition-all">
+                                        ${t.btnBuy}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterProducts(category) {
+            document.querySelectorAll('.product-filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.className = "product-filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold bg-berry-500 text-white shadow-md transition-all";
+                } else {
+                    btn.className = "product-filter-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold cheerful-card text-[var(--text-muted)] hover:text-berry-500 transition-all";
+                }
+            });
+
+            if (category === 'all') {
+                renderProducts(products);
+            } else {
+                renderProducts(products.filter(p => p.category === category));
+            }
+        }
+
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            const filtered = products.filter(p => {
+                const name = (p.id_name + " " + p.en_name).toLowerCase();
+                const origin = (p.id_origin + " " + p.en_origin).toLowerCase();
+                const desc = (p.id_desc + " " + p.en_desc).toLowerCase();
+                return name.includes(q) || origin.includes(q) || desc.includes(q);
+            });
+            renderProducts(filtered);
+        }
+
+        // Custom Gift Box Picker Logic
+        function renderCustomBoxPickers() {
+            const container = document.getElementById('box-picker-items');
+            container.innerHTML = products.filter(p => p.category !== 'gift').map(p => {
+                const name = currentLang === 'id' ? p.id_name : p.en_name;
+                return `
+                    <div onclick="selectBoxItem(${p.id})" class="p-3 bg.var(--bg-main) rounded-2xl border-2 border-[var(--border-color)] hover:border-berry-500 cursor-pointer text-left transition-all group hover:bg-sun-300/10">
+                        <h5 class="text-xs font-extrabold group-hover:text-berry-500">${name}</h5>
+                        <span class="text-[10px] text-berry-500 font-bold block mt-1">+ Rp ${p.price.toLocaleString('id-ID')}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function selectBoxItem(id) {
+            if (selectedCustomSlots.length >= 4) {
+                showToast(currentLang === 'id' ? "Maksimal 4 varian cokelat per Gift Box!" : "Maximum 4 bars per Gift Box!", "error");
+                return;
+            }
+            const item = products.find(p => p.id === id);
+            selectedCustomSlots.push(item);
+            updateBoxUI();
+            showToast(`${currentLang === 'id' ? 'Slot terisi' : 'Slot added'}: ${currentLang === 'id' ? item.id_name : item.en_name}`);
+        }
+
+        function removeBoxItem(index) {
+            selectedCustomSlots.splice(index, 1);
+            updateBoxUI();
+        }
+
+        function updateBoxUI() {
+            const count = selectedCustomSlots.length;
+            document.getElementById('box-slot-count').innerText = `${count} ${currentLang === 'id' ? 'dari 4 Terpilih' : 'of 4 Selected'}`;
+
+            const slotsContainer = document.getElementById('box-selected-slots');
+            let html = '';
+
+            for (let i = 0; i < 4; i++) {
+                if (selectedCustomSlots[i]) {
+                    const item = selectedCustomSlots[i];
+                    const name = currentLang === 'id' ? item.id_name : item.en_name;
+                    html += `
+                        <div class="h-24 rounded-2xl bg-[var(--bg-card)] border-2 border-sun-400 flex flex-col items-center justify-between p-2.5 text-center relative shadow-sm">
+                            <button onclick="removeBoxItem(${i})" class="absolute -top-2 -right-2 bg-berry-500 text-white rounded-full w-5 h-5 text-[10px] flex items-center justify-center hover:scale-110">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                            <span class="text-[11px] text-berry-500 font-extrabold line-clamp-2 mt-1">${name}</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded-full bg-sun-300 text-choco-900 font-black">${item.cocoaPercent}</span>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="h-24 rounded-2xl border-2 border-dashed border-[var(--border-color)] flex flex-col items-center justify-center p-2 text-center text-[var(--text-muted)] text-[11px] font-bold">
+                            <i class="fa-solid fa-plus text-base text-berry-500 mb-1"></i>
+                            <span>Slot ${i + 1}</span>
+                        </div>
+                    `;
+                }
+            }
+            slotsContainer.innerHTML = html;
+            document.getElementById('add-custom-box-btn').disabled = count !== 4;
+        }
+
+        function addCustomBoxToCart() {
+            if (selectedCustomSlots.length !== 4) return;
+
+            const boxPrice = selectedCustomSlots.reduce((sum, item) => sum + item.price, 0) + 25000;
+            const msg = document.getElementById('box-custom-message').value.trim();
+            const names = selectedCustomSlots.map(i => (currentLang === 'id' ? i.id_name : i.en_name).split(' ')[0]).join(', ');
+            const boxTitle = `Joyful Custom Gift Box (${names})`;
+
+            cart.push({
+                id: Date.now(),
+                name: boxTitle + (msg ? ` [Kartu: "${msg}"]` : ''),
+                price: boxPrice,
+                quantity: 1,
+                image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80"
+            });
+
+            selectedCustomSlots = [];
+            document.getElementById('box-custom-message').value = '';
+            updateBoxUI();
+            updateCartUI();
+            toggleCartDrawer();
+            showToast(currentLang === 'id' ? "Custom Gift Box berhasil masuk keranjang!" : "Custom Gift Box added to bag!");
+        }
+
+        // Quiz Assistant Logic
+        function renderQuiz() {
+            const container = document.getElementById('quiz-step-container');
+            const quizQuestions = [
+                {
+                    id_q: "1. Sensasi rasa seperti apa yang bikin senyum Anda makin mengembang?",
+                    en_q: "1. What flavor vibe instantly puts a smile on your face?",
+                    options: [
+                        { id_l: "🍫 Pekat kaya kakao asli (Dark Cacao 74%+)", en_l: "🍫 Rich intense cacao (Dark Cacao 74%+)", category: "dark" },
+                        { id_l: "🥛 Creamy manis susu & vanila lumer (Milk)", en_l: "🥛 Creamy sweet milk & melted vanilla", category: "milk" },
+                        { id_l: "🍬 Isian karamel lumer & sensasi asin gurih", en_l: "🍬 Gooey salted caramel filled pralines", category: "praline" }
+                    ]
+                },
+                {
+                    id_q: "2. Aroma segar pendamping favorit Anda?",
+                    en_q: "2. Your favorite fresh aroma notes?",
+                    options: [
+                        { id_l: "🍓 Buah beri tropis & buah-buahan segar", en_l: "🍓 Wild tropical berries & fruits", category: "dark" },
+                        { id_l: "🍵 Teh hijau matcha segar & harum", en_l: "🍵 Fresh fragrant matcha green tea", category: "milk" },
+                        { id_l: "🍯 Karamel hangat & butter gurih", en_l: "🍯 Warm caramel & rich butter", category: "praline" }
+                    ]
+                },
+                {
+                    id_q: "3. Cokelat lezat ini bakal dinikmati kapan?",
+                    en_q: "3. When are you planning to enjoy this chocolate?",
+                    options: [
+                        { id_l: "☕ Teman santai ngopi/teh sore hari", en_l: "☕ Afternoon tea/coffee break treat", category: "dark" },
+                        { id_l: "🎁 Kado kejutan manis untuk sahabat", en_l: "🎁 Sweet surprise gift for a friend", category: "gift" },
+                        { id_l: "🎉 Peningkat mood kerja biar makin ceria", en_l: "🎉 Mood booster during work or study", category: "milk" }
+                    ]
+                }
+            ];
+
+            if (currentQuizStep < quizQuestions.length) {
+                const q = quizQuestions[currentQuizStep];
+                const questionText = currentLang === 'id' ? q.id_q : q.en_q;
+
+                container.innerHTML = `
+                    <div class="space-y-4 max-w-lg mx-auto">
+                        <h3 class="font-display font-bold text-base sm:text-lg text-[var(--text-heading)]">${questionText}</h3>
+                        <div class="space-y-2.5">
+                            ${q.options.map((opt) => `
+                                <button onclick="handleQuizAnswer('${opt.category}')" class="w-full text-left p-4 rounded-2xl border-2 border-[var(--border-color)] hover:border-berry-500 bg-[var(--bg-main)] font-extrabold text-xs sm:text-sm text-[var(--text-muted)] hover:text-berry-500 transition-all flex items-center justify-between shadow-sm">
+                                    <span>${currentLang === 'id' ? opt.id_l : opt.en_l}</span>
+                                    <i class="fa-solid fa-chevron-right text-xs text-berry-500"></i>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                const categoryCounts = {};
+                quizAnswers.forEach(cat => categoryCounts[cat] = (categoryCounts[cat] || 0) + 1);
+                const winningCategory = Object.keys(categoryCounts).reduce((a, b) => categoryCounts[a] > categoryCounts[b] ? a : b, 'dark');
+
+                const recommended = products.find(p => p.category === winningCategory) || products[0];
+                const recName = currentLang === 'id' ? recommended.id_name : recommended.en_name;
+                const recDesc = currentLang === 'id' ? recommended.id_desc : recommended.en_desc;
+
+                container.innerHTML = `
+                    <div class="text-center space-y-4 max-w-md mx-auto">
+                        <h3 class="font-display font-bold text-xl text-[var(--text-heading)]">${currentLang === 'id' ? '🎉 Rekomendasi Cokelat Pas Untuk Anda:' : '🎉 Your Perfect Chocolate Match:'}</h3>
+                        
+                        <div class="bg-[var(--bg-card)] p-6 rounded-3xl border-2 border-sun-400 text-left space-y-2 shadow-md">
+                            <span class="text-[10px] font-black uppercase bg-sun-400 text-choco-900 px-3 py-1 rounded-full inline-block">✨ Perfect Match</span>
+                            <h4 class="font-display font-bold text-lg text-berry-500">${recName}</h4>
+                            <p class="text-xs text-[var(--text-muted)] leading-relaxed font-medium">${recDesc}</p>
+                            <div class="text-sm font-display font-bold pt-2 border-t border-[var(--border-color)] text-[var(--text-heading)]">${dict[currentLang].priceLbl}: Rp ${recommended.price.toLocaleString('id-ID')}</div>
+                        </div>
+
+                        <div class="flex justify-center space-x-3 pt-2">
+                            <button onclick="resetQuiz()" class="px-6 py-2.5 rounded-full border-2 border-[var(--border-color)] text-[var(--text-muted)] text-xs font-bold hover:text-berry-500">
+                                ${currentLang === 'id' ? 'Ulangi Kuis' : 'Retake Quiz'}
+                            </button>
+                            <button onclick="addToCart(${recommended.id}); toggleCartDrawer();" class="px-6 py-2.5 rounded-full bg-berry-500 hover:bg-berry-600 text-white font-display font-bold text-xs shadow-md">
+                                + ${currentLang === 'id' ? 'Tambah Ke Keranjang' : 'Add to Bag'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function handleQuizAnswer(category) {
+            quizAnswers.push(category);
+            currentQuizStep++;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            currentQuizStep = 0;
+            quizAnswers = [];
+            renderQuiz();
+        }
+
+        // Cart Management
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const productName = currentLang === 'id' ? product.id_name : product.en_name;
+            const existingIndex = cart.findIndex(item => item.id === productId);
+
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: productName,
+                    price: product.price,
+                    quantity: 1,
+                    image: product.image
+                });
+            }
+
+            updateCartUI();
+            showToast(`${currentLang === 'id' ? 'Ditambahkan ke keranjang' : 'Added to bag'}: ${productName}`);
+        }
+
+        function updateCartQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const totalBadge = document.getElementById('cart-badge');
+            const mobileTotalBadge = document.getElementById('mobile-cart-badge');
+            const totalPriceEl = document.getElementById('cart-total-price');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            totalBadge.innerText = totalCount;
+            mobileTotalBadge.innerText = totalCount;
+            totalPriceEl.innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-[var(--text-muted)] text-center text-xs sm:text-sm font-bold py-12">${currentLang === 'id' ? 'Keranjang Anda masih kosong 🍫' : 'Your bag is currently empty 🍫'}</p>`;
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => `
+                <div class="flex items-center space-x-3 p-3 rounded-2xl bg-[var(--bg-main)] border-2 border-[var(--border-color)]">
+                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded-xl shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/100x100/FFBD59/3D1B0C?text=Cokelat';">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-xs font-extrabold truncate text-[var(--text-heading)]">${item.name}</h4>
+                        <span class="text-xs text-berry-500 font-extrabold block mt-0.5">Rp ${(item.price * item.quantity).toLocaleString('id-ID')}</span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-[var(--bg-secondary)] px-2 py-1 rounded-lg border border-[var(--border-color)]">
+                        <button onclick="updateCartQuantity(${index}, -1)" class="text-[var(--text-muted)] hover:text-berry-500 text-xs px-1 font-black">-</button>
+                        <span class="text-xs font-bold">${item.quantity}</span>
+                        <button onclick="updateCartQuantity(${index}, 1)" class="text-[var(--text-muted)] hover:text-berry-500 text-xs px-1 font-black">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) {
+                showToast(currentLang === 'id' ? "Keranjang Anda kosong" : "Your bag is empty", "error");
+                return;
+            }
+
+            let message = currentLang === 'id' 
+                ? "Halo Kokoa Nusantara! 🎉 Saya mau pesan cokelat ceria berikut:\n\n" 
+                : "Hello Kokoa Nusantara! 🎉 I would like to order the following chocolates:\n\n";
+
+            cart.forEach((item, i) => {
+                message += `${i + 1}. *${item.name}* (${item.quantity}x) = Rp ${(item.price * item.quantity).toLocaleString('id-ID')}\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += currentLang === 'id'
+                ? `\n*Total Estimasi:* Rp ${total.toLocaleString('id-ID')}\n\nMohon konfirmasi pesanan & rincian pengiriman cold-pack gratis. Terima kasih!`
+                : `\n*Estimated Total:* Rp ${total.toLocaleString('id-ID')}\n\nPlease confirm order & free cold-pack shipping details. Thank you!`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/6281234567890?text=${encoded}`, '_blank');
+        }
+
+        // Product Modal Details
+        function openProductModal(id) {
+            const p = products.find(prod => prod.id === id);
+            if (!p) return;
+
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('product-modal-content');
+            const name = currentLang === 'id' ? p.id_name : p.en_name;
+            const origin = currentLang === 'id' ? p.id_origin : p.en_origin;
+            const tasting = currentLang === 'id' ? p.id_tasting : p.en_tasting;
+            const desc = currentLang === 'id' ? p.id_desc : p.en_desc;
+
+            content.innerHTML = `
+                <div class="relative">
+                    <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-sun-400 text-choco-900 flex items-center justify-center font-black hover:scale-110">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <div class="grid sm:grid-cols-2">
+                        <img src="${p.image}" alt="${name}" class="w-full h-56 sm:h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x600/FFBD59/3D1B0C?text=Cokelat+Kokoa';">
+                        <div class="p-6 space-y-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-black bg-sun-300 text-choco-900 inline-block border border-sun-400">
+                                Kakao ${p.cocoaPercent}
+                            </span>
+                            <h3 class="font-display font-bold text-xl text-[var(--text-heading)]">${name}</h3>
+                            <p class="text-xs text-[var(--text-muted)] font-medium leading-relaxed">${desc}</p>
+                            
+                            <div class="space-y-1 pt-2 text-xs text-[var(--text-muted)] font-medium">
+                                <div><strong class="text-[var(--text-heading)]">📍 ${currentLang === 'id' ? 'Asal Kakao' : 'Cacao Origin'}:</strong> ${origin}</div>
+                                <div><strong class="text-[var(--text-heading)]">😋 Tasting Notes:</strong> ${tasting}</div>
+                            </div>
+
+                            <div class="pt-4 border-t-2 border-[var(--border-color)] flex items-center justify-between">
+                                <span class="font-display font-bold text-lg text-berry-500">Rp ${p.price.toLocaleString('id-ID')}</span>
+                                <button onclick="addToCart(${p.id}); closeProductModal(); toggleCartDrawer();" class="px-5 py-2.5 rounded-full bg-berry-500 hover:bg-berry-600 text-white font-display font-bold text-xs shadow-md">
+                                    + ${currentLang === 'id' ? 'Beli Sekarang' : 'Buy Now'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
